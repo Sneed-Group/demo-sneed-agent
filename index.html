@@ -1,0 +1,20 @@
+<head><title>Sneed Agent Demo.</title></head>
+<body>
+<script>
+const hostname = "https://llm-api.nodemixaholic.com"
+const q = prompt("Please enter q query.", "Hello!")
+const www = prompt("Optionally, put in a URL for context.")
+let url = `${hostname}/?q=${encodeURIComponent(`"${q}"`)}&www=${encodeURIComponent(`${www}`)}`
+console.log(url)
+
+// Fetch the results
+fetch(String(url))
+.then(response => response.text())
+.then(result => {
+
+// Set the body content to the generated SPL text
+document.body.innerText = `${result}`;
+})
+.catch(error => console.error('Error fetching result:', error));
+</script>
+</body>
